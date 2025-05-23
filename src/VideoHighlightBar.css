@@ -1,0 +1,42 @@
+
+.video-highlight-bar {
+    position: relative;
+    height: 40px;
+    margin: 20px auto;
+    width: 90%;
+  }
+  
+  .timeline-track {
+    position: relative;
+    height: 8px;
+    background-color: #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .highlight-marker {
+    position: absolute;
+    top: -6px;
+    width: 12px;
+    height: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  /* Different event types (customize as needed) */
+  .highlight-marker.wicket {
+    background-color: red;
+  }
+  .highlight-marker.boundary {
+    background-color: green;
+  }
+  .highlight-marker.replay {
+    background-color: orange;
+  }
+  
+  .highlight-marker:hover {
+    transform: scale(1.3);
+    z-index: 10;
+  }
+  
