@@ -116,7 +116,7 @@ const Dashboard = ({ isSidebarOpen }) => {
 
   const handleReset = () => {
     resetState();
-    window.location.reload()
+    window.location.reload();
     setSelectedFile(null);
     setHoveredFrame(null);
   };

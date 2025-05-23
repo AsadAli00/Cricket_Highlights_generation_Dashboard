@@ -1,6 +1,6 @@
 import cv2
 import subprocess
-import pytesseract
+# import pytesseract
 import random
 import os
 from collections import defaultdict
@@ -11,7 +11,7 @@ from torchvision.transforms import Compose, Normalize, ToTensor
 import numpy as np
 from concurrent.futures import ThreadPoolExecutor
 import logging
-from deep_sort_realtime.deepsort_tracker import DeepSort
+# from deep_sort_realtime.deepsort_tracker import DeepSort
 
 
 # Setup logging
@@ -31,7 +31,7 @@ local_model_dir_MAE = "./videomae-base-finetuned-Custom_Dataset_Finetune"
 # local_model_vivit = "./Cricket_Shot_Detection_vivit_finetuned_1"
 local_model_vivit = "./vivit-b-16x2-kinetics400-Finetune_10Shots"
 
-pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tesseract.exe'  # Update this path as needed
+# pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tesseract.exe'  # Update this path as needed
 
 # 2. Load the processor
 processor_load = VivitImageProcessor.from_pretrained(local_model_vivit)
@@ -342,8 +342,8 @@ def process_ball_sequence_transition(ball_frames, ball_number,video_name, output
     # Save first frame (reference) with fixed pitch zones.
     frame_paths = []  # List to store paths of saved frames
     original_frames_dir = os.path.join(output_directory, "original_frames")
-    annotated_frames_dir = os.path.join(f"D:\App\dashboard\public\{video_name}", "annotated_frames")
-    bounce_results_dir = os.path.join(f"D:\App\dashboard\public", video_name)
+    annotated_frames_dir = os.path.join(f"../public/{video_name}", "annotated_frames")
+    bounce_results_dir = os.path.join(f"../public/", video_name)
     
     os.makedirs(original_frames_dir, exist_ok=True)
     os.makedirs(annotated_frames_dir, exist_ok=True)
@@ -738,14 +738,14 @@ def process_video(video_file, main_output_directory):
 
 
     #  Create individual ball highlight videos
-    highlights_dir = f"D:\App\dashboard\public\{video_name}"
+    highlights_dir = rf"C:\Users\Administrator\Desktop\New folder\Implement_Shot_Classfication_model\App\dashboard\public\{video_name}"
     os.makedirs(highlights_dir, exist_ok=True)
     ball_video_paths = create_individual_ball_videos(video_output_directory, highlights_dir, ball_number, fps=30)
     print(ball_video_paths)
     
     # Merge individual ball videos into a complete highlights video
 
-    Com_Highlighted_dir =f"D:\App\dashboard\public\{video_name}"
+    Com_Highlighted_dir = rf"C:\Users\Administrator\Desktop\New folder\Implement_Shot_Classfication_model\App\dashboard\public\{video_name}"
     os.makedirs(Com_Highlighted_dir, exist_ok=True)
     output_video_path = os.path.join(f"{Com_Highlighted_dir}", f"{video_name}_highlights.mp4")
     output_video_path = merge_ball_videos(ball_video_paths, output_video_path, fps=30)
